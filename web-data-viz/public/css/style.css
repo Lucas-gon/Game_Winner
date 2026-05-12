@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+            /* Define a cor principal do site */
+            --cor-principal: #FF8C00; 
+            /* Define a cor de fundo */
+            --fundo-escuro: #121212;
+            /* Define a cor dos cards */
+            --fundo-card: #1e1e1e;
+        }
+
+        /* Aplica estilos ao corpo inteiro da página */
+        body {
+            /* Define a cor de fundo */
+            background-color: var(--fundo-escuro);
+            /* Define a cor padrão de todos os textos */
+            color: white;
+            /* Remove margens padrão do navegador */
+            margin: 0;
+            /* Define uma fonte moderna e sem serifa para o corpo do texto */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Configurações da barra de navegação (Header) */
+        .header {
+            /* Define a cor de fundo da navbar */
+            background-color: #383737;
+            /* Adiciona uma linha colorida na parte de baixo para dar destaque */
+            border-bottom: 2px solid var(--cor-principal);
+            /* Adiciona um preenchimento interno em cima e embaixo */
+            padding: 10px 0;
+            /* Garante que a barra ocupe toda a largura da tela */
+            width: 100%;
+        }
+
+        /* Container que centraliza o conteúdo da navbar */
+        .header .container {
+            /* Ativa o Flexbox para alinhar os elementos internamente */
+            display: flex;
+            /* Empurra a logo para a esquerda e o menu para a direita */
+            justify-content: space-between;
+            /* Alinha os itens verticalmente ao centro */
+            align-items: center;
+            /* Define a largura útil do conteúdo */
+            width: 80%;
+            /* Centraliza o container na tela horizontalmente */
+            margin: 0 auto;
+        }
+
+        /* Estilização da logo (Texto Cursivo Chique) */
+        .logo-titulo {
+            /* Aplica a fonte elegante que importamos do Google */
+            font-family: 'Great Vibes', cursive;
+            /* Define um tamanho de destaque para o nome da marca */
+            font-size: 42px;
+            /* Define o peso da fonte (400 é o normal para cursivas) */
+            font-weight: 400;
+            /* Define a cor da logo (pode ser alterada via JS futuramente) */
+            color: white;
+            /* Remove margens automáticas da tag H1 */
+            margin: 0;
+        }
+
+        /* Estilização da lista de links da Navbar */
+        .navbar {
+            /* Ativa o Flexbox para deixar os links um ao lado do outro */
+            display: flex;
+            /* Remove as bolinhas (marcadores) da lista */
+            list-style: none;
+            /* Adiciona um espaço de 30px entre cada item do menu */
+            gap: 30px;
+            /* Remove margens padrão da lista */
+            margin: 0;
+        }
+
+        /* Estilo para os links (tags 'a') dentro da Navbar */
+        .navbar a {
+            /* Remove o sublinhado padrão dos links */
+            text-decoration: none;
+            /* Define a cor do texto para branco */
+            color: white;
+            /* Define o peso da fonte para ser levemente negrito */
+            font-weight: 500;
+            /* Adiciona uma transição suave de 0.3 segundos para efeitos */
+            transition: 0.3s;
+        }
+
+        /* Efeito quando o usuário passa o mouse sobre o link */
+        .navbar a:hover {
+            /* Muda a cor do link para a cor principal (laranja) */
+            color: var(--cor-principal);
+        }
+
+        /* Configuração do Banner (Seção de Destaque) */
+        .banner {
+            /* Define uma altura mínima para o banner principal */
+            min-height: 400px;
+            /* Ativa o Flexbox para centralizar o texto internamente */
+            display: flex;
+            /* Alinha o conteúdo verticalmente */
+            align-items: center;
+            /* Adiciona um gradiente que vai do laranja para o preto */
+            background: linear-gradient(to right, #FF8C00, #121212);
+            /* Garante que o texto tenha um espaço da borda esquerda */
+            padding-left: 10%;
+        }
+
+        /* Estilo do título principal dentro do Banner */
+        .banner h1 {
+            /* Define um tamanho de fonte grande e impactante */
+            font-size: 50px;
+            /* Remove margens extras */
+            margin-bottom: 10px;
+        }
+
+        /* Estilo do subtexto explicativo do Banner */
+        .banner p {
+            /* Define um tamanho de fonte legível para descrições */
+            font-size: 18px;
+            /* Adiciona um limite de largura para o texto não ficar muito longo */
+            max-width: 500px;
+            /* Deixa a cor levemente acinzentada para não cansar a vista */
+            color: #dddddd;
+        }
+
+        /* Estilização dos Cards de Funcionalidades */
+        .sessao-detalhes {
+            /* Adiciona um espaço interno grande entre o banner e os cards */
+            padding: 60px 0;
+            /* Centraliza o texto dentro da seção */
+            text-align: center;
+        }
+
+        /* Container que segura os cards lado a lado */
+        .cards-container {
+            /* Ativa o Flexbox para organizar os cards */
+            display: flex;
+            /* Centraliza os cards horizontalmente */
+            justify-content: center;
+            /* Adiciona espaço entre os cards */
+            gap: 20px;
+            /* Permite que os cards pulem de linha se a tela for pequena */
+            flex-wrap: wrap;
+        }
+
+        /* Estilo individual de cada Card */
+        .card {
+            /* Define a cor de fundo conforme o tema dark */
+            background-color: var(--fundo-card);
+            /* Adiciona uma borda colorida no topo para estilo */
+            border-top: 5px solid var(--cor-principal);
+            /* Adiciona um preenchimento interno nos cards */
+            padding: 30px;
+            /* Define uma largura fixa para os cards */
+            width: 250px;
+            /* Adiciona bordas levemente arredondadas */
+            border-radius: 8px;
+            /* Adiciona uma sombra sutil para dar profundidade no escuro */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
