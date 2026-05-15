@@ -1,11 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+    <title>Game Winner | Dashboard</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/dashboards.css">
     
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="container">
+            <h1 class="logo-titulo">Game Winner</h1>
+            <ul class="navbar">
+                <li><a href="index.html">Sair</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="dash-container">
+        <div class="dash-header">
+            <h1>Seu Desempenho Clutch</h1>
+            <p style="color: #bbb;">Análise de aproveitamento nos últimos 7 dias</p>
+        </div>
+
+        <div class="kpi-wrapper">
+            <div class="kpi-card">
+                <h4>FG% Atual</h4>
+                <span class="valor" style="color: var(--cor-principal);">68%</span>
+            </div>
+            <div class="kpi-card">
+                <h4>Arremessos Totais</h4>
+                <span class="valor">85</span>
+            </div>
+            <div class="kpi-card">
+                <h4>Sequência Atual</h4>
+                <span class="valor" style="color: var(--sucesso);">5 🔥</span>
+            </div>
+        </div>
+
+        <div class="graph-wrapper">
+            <div class="graph-card">
+                <h4 style="margin-top: 0;">Evolução de Aproveitamento (%)</h4>
+                <canvas id="chartLinha"></canvas>
+            </div>
+
+            <div class="graph-card side">
+                <h4 style="margin-top: 0;">Acertos vs Erros</h4>
+                <canvas id="chartDonut"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuração do Gráfico de Linha (Evolução Semanal)
+        const ctxLinha = document.getElementById('chartLinha').getContext('2d');
+        new Chart(ctxLinha, {
+            type: 'line', // Define que o gráfico é de linha
+            data: {
+                labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'], // Eixo X
+                datasets: [{
+                    label: 'Aproveitamento %',
+                    data: 33, // Dados fictícios da Beta
+                    borderColor: '#FF8C00', // Cor da linha (Laranja)
+                    backgroundColor: 'rgba(255, 140, 0, 0.2)', // Cor de fundo sob a linha
+                    fill: true, // Preenche a área abaixo da linha
+                    tension: 0.4 // Deixa a linha mais curva/suave
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true, max: 100 } // Escala de 0 a 100%
+                }
+            }
+        });
+
+        // Configuração do Gráfico de Donut (Acertos vs Erros)
+        const ctxDonut = document.getElementById('chartDonut').getContext('2d');
+        new Chart(ctxDonut, {
+            type: 'doughnut', // Define que o gráfico é de rosca
+            data: {
+                labels: ['Acertos', 'Erros'],
+                datasets: [{
+                    data: 33, // Exemplo: 55 acertos e 30 erros
+                    backgroundColor: ['#2ecc71', '#e74c3c'], // Verde e Vermelho
+                    borderWidth: 0 // Remove as bordas entre as fatias
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom' } // Legenda na parte de baixo
+                }
+            }
+        });
+    </script>
 </body>
+
 </html>

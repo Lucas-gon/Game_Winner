@@ -1,428 +1,143 @@
 /* pagina mural */
-
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+       
+/* Seleciona as variáveis globais que podem ser usadas em todo o código */
+:root {
+    --cor-principal: #FF8C00; /* Define o Laranja Basquete como cor de destaque */
+    --fundo-escuro: #121212;  /* Define o tom de preto para o fundo da página */
+    --fundo-card: #1e1e1e;    /* Define um cinza escuro para os blocos de informação */
+    --sucesso: #2ecc71;       /* Define a cor verde para resultados positivos (acertos) */
+    --erro: #e74c3c;          /* Define a cor vermelha para resultados negativos (erros) */
+}
 
+/* Estilização geral do corpo da página */
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--fundo-escuro); /* Aplica a cor preta de fundo */
+    color: white; /* Garante que todos os textos básicos sejam brancos */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Define a fonte padrão */
+    margin: 0; /* Remove as bordas brancas que o navegador coloca por padrão */
+    padding: 0; /* Remove preenchimentos internos padrão */
 }
 
-.label-captura {
-  display: flex;
-  justify-content: center;
+/* --- ESTILO DA NAVBAR (Copiado da Home para manter o padrão) --- */
+
+/* Estiliza a barra de navegação superior */
+.header {
+    background-color: #1a1a1a; /* Cinza bem escuro para diferenciar do fundo */
+    border-bottom: 2px solid var(--cor-principal); /* Linha laranja fina na parte de baixo */
+    padding: 10px 0; /* Espaço interno em cima e embaixo */
 }
 
-.dash-right .avisos {
-  width: 100%;
-  color: rgb(216, 216, 216);
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Container que centraliza os itens dentro da navbar */
+.header .container {
+    display: flex; /* Ativa o modo de alinhamento flexível */
+    justify-content: space-between; /* Empurra a logo para a esquerda e links para a direita */
+    align-items: center; /* Alinha os textos verticalmente no meio da barra */
+    width: 90%; /* Define que a barra ocupará 90% da largura da tela */
+    margin: 0 auto; /* Centraliza esse container de 90% no meio da tela */
 }
 
-.dash-right .avisos .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Estiliza o texto "Game Winner" com a fonte cursiva chique */
+.logo-titulo {
+    font-family: 'Great Vibes', cursive; /* Aplica a fonte que baixamos do Google */
+    font-size: 35px; /* Tamanho da fonte da logo */
+    color: white; /* Cor branca para a logo */
+    margin: 0; /* Remove margens automáticas que o H1 costuma ter */
 }
 
-.dash-right .avisos .container .div-form {
-  width: 95%;
+/* Estiliza a lista de links da navbar */
+.navbar {
+    display: flex; /* Deixa os itens da lista um ao lado do outro */
+    list-style: none; /* Remove as bolinhas da lista (dots) */
+    gap: 20px; /* Cria um espaço de 20px entre cada link */
 }
 
-.dash-right .avisos .container .div-form #form_postagem {
-  width: 95%;
+/* Estiliza os links individuais (a) */
+.navbar a {
+    text-decoration: none; /* Remove o sublinhado dos links */
+    color: #bbb; /* Define uma cor cinza clara para os links */
+    font-size: 14px; /* Tamanho da fonte dos links */
 }
 
-.dash-right .avisos .div-form label {
-  width: 95%;
+/* --- ESTILO DA ÁREA DE CONTEÚDO DA DASH --- */
+
+/* Espaçamento principal em volta de toda a Dashboard */
+.dash-container {
+    padding: 30px; /* Espaço entre o conteúdo e as bordas da tela */
+    max-width: 1200px; /* Define um tamanho máximo para a Dash não esticar demais */
+    margin: 0 auto; /* Centraliza a Dashboard na tela */
 }
 
-.dash-right .avisos .div-form input {
-  width: 95%;
-  border-radius: 5px;
-}
-
-.dash-right .avisos .div-form textarea {
-  width: 95%;
-  border: 3px solid #e6005a;
-  background-color: white;
-  border-radius: 5px;
-}
-
-.dash-right .avisos .div-form button {
-  cursor: pointer;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 10px 15px;
-  color: white;
-  background-color: #e6005a;
-  width: 120px;
-}
-
-.publicacao-btn-editar {
-  cursor: pointer;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 14px;
-  padding: 5px 8px;
-  color: white;
-  background-color: #e6005a;
-  width: 80px;
-}
-
-.publicacao {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: stretch;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
-  border-bottom: 3px solid #e6005a;
-  padding: 20px;
-}
-
-.publicacao>*:not(:last-child) {
-  padding: 0 0 10px 0;
-}
-
-.div-results {
-  width: 100%;
-}
-
-.div-results .feed-container {
-  background-color: #212124;
-  border-radius: 5px;
-  margin-bottom: 80px;
-}
-
-.div-buttons {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.div-buttons>* {
-  margin-left: 30px;
-}
-
-/* pagina graficos */
-
+/* Título e descrição da Dashboard */
 .dash-header {
-  background-color: #212124;
+    margin-bottom: 30px; /* Cria uma distância entre o título e os gráficos abaixo */
 }
 
-.dash {
-  width: 80%;
-  position: relative;
-  top: 0;
-  left: 20%;
-  background-color: #161618;
-  height: 100vh;
-  overflow: auto;
+/* --- ESTRUTURA DOS INDICADORES (KPIs) --- */
+
+/* Wrapper que segura os 3 cards de cima */
+.kpi-wrapper {
+    display: grid; /* Ativa o modo "Grid" (malha/tabela) */
+    grid-template-columns: repeat(3, 1fr); /* Cria 3 colunas de tamanhos iguais */
+    gap: 20px; /* Espaço entre cada card de indicador */
+    margin-bottom: 30px; /* Distância entre os indicadores e os gráficos */
 }
 
-.area-parametros-alerta {
-  /* border: 2px solid pink; */
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-  margin: auto;
-  margin-top: 10px;
-  background-color: #212124;
+/* Estilo individual de cada card de indicador */
+.kpi-card {
+    background-color: var(--fundo-card); /* Fundo cinza escuro */
+    padding: 20px; /* Espaço interno para o texto não encostar nas bordas */
+    border-radius: 10px; /* Arredonda as pontas do card */
+    text-align: center; /* Centraliza o texto dentro do card */
+    border-bottom: 4px solid var(--cor-principal); /* Detalhe laranja grosso na base */
 }
 
-.area-parametros-alerta .titulo-legenda {
-  color: white;
-  font-weight: 600;
-  width: fit-content;
-  margin: 10px 20px;
+/* Estilo do título do indicador (ex: FG% ATUAL) */
+.kpi-card h4 {
+    margin: 0; /* Remove margens extras */
+    color: #bbb; /* Texto cinza para o rótulo */
+    font-size: 14px; /* Tamanho menor para o título */
+    text-transform: uppercase; /* Deixa o texto todo em MAIÚSCULO */
 }
 
-.parametros-alerta {
-  display: flex;
-  width: 100%;
+/* Estilo do valor numérico principal dentro do card */
+.kpi-card .valor {
+    font-size: 32px; /* Valor grande para chamar atenção */
+    font-weight: bold; /* Deixa o número em negrito */
+    margin-top: 10px; /* Distância entre o título e o valor */
+    display: block; /* Garante que o valor ocupe uma linha própria */
 }
 
-.item-regua {
-  width: 20%;
-  text-align: center;
-  height: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-self: center;
+/* --- ESTRUTURA DOS GRÁFICOS --- */
+
+/* Wrapper que segura os dois gráficos principais */
+.graph-wrapper {
+    display: flex; /* Deixa os gráficos um ao lado do outro */
+    gap: 20px; /* Espaço entre o gráfico de linha e o de pizza */
+    height: 400px; /* Define uma altura fixa para a área dos gráficos */
 }
 
-.item-regua p {
-  margin: 0;
-  font-weight: 500;
+/* Estilo da caixa que envolve cada gráfico */
+.graph-card {
+    background-color: var(--fundo-card); /* Fundo cinza escuro */
+    padding: 20px; /* Espaço interno */
+    border-radius: 10px; /* Pontas arredondadas */
+    flex: 2; /* Faz esse gráfico (o de linha) ocupar 2/3 do espaço disponível */
+    display: flex; /* Permite controlar o conteúdo interno */
+    flex-direction: column; /* Organiza título e gráfico de cima para baixo */
 }
 
-.item-regua p:nth-child(2) {
-  font-weight: 800;
+/* Classe específica para o gráfico menor (lateral) */
+.graph-card.side {
+    flex: 1; /* Faz esse gráfico (o de pizza) ocupar apenas 1/3 do espaço */
 }
 
-.perigo-frio {
-  background-color: #5c6bc0;
-}
-
-.perigo-quente {
-  background-color: #ff7043;
-}
-
-.alerta-frio {
-  background-color: #42a5f5;
-}
-
-.alerta-quente {
-  background-color: #ffee58;
-}
-
-.ideal {
-  background-color: #9ccc65;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  height: 450px;
-  width: 100%;
-  align-items: center;
-  color: white;
-}
-
-.card-aquario {
-  margin: 2%;
-  min-width: 40%;
-  max-width: 50%;
-  width: fit-content;
-  flex-wrap: wrap;
-  display: flex;
-  /* text-align: center; */
-  height: 180px;
-  /* justify-content: right; */
-  background-color: #212124;
-  font-size: 20px;
-}
-
-.card-aquario h1 {
-  width: fit-content;
-}
-
-.card-aquario p {
-  margin: 0;
-  font-size: 50px;
-  font-weight: lighter;
-  text-align: left;
-}
-
-.desc-aquario {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-}
-
-.desc-aquario .cor-alerta {
-  width: 30px;
-}
-
-.title-aquario {
-  width: 100%;
-}
-
-
-.cards h1 {
-  font-size: 22px;
-  border-bottom: solid white 1px;
-  text-align: left;
-  font-weight: lighter;
-  margin: 20px;
-}
-
-.temperatura,
-.umidade {
-  margin: 5px;
-  margin-left: 20px;
-  width: 75%;
-}
-
-.cor-alerta {
-  width: 13%;
-  height: 30%;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.btns-dash {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 30px;
-  flex-wrap: wrap;
-  padding: 0 30% 0 30%;
-}
-
-.graph {
-  width: 70%;
-  margin: auto;
-  padding-top: 10px;
-}
-
-.tituloGraficos {
-  color: rgb(216, 216, 216);
-  display: flex;
-  justify-content: center;
-}
-
-.btn-chart {
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border: 0;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 10px 15px;
-  color: #e6005a;
-  background-color: white;
-  margin: 5px;
-  border-radius: 3px;
-  cursor: pointer
-}
-
-.btn-pink {
-  color: white;
-  background-color: #e6005a;
-}
-
-.btn-white {
-  color: #e6005a;
-  background-color: white;
-
-}
-
-.label-captura {
-  height: 80px;
-}
-
-.display-none {
-  display: none;
-}
-
-.display-flex {
-  display: flex;
-}
-
-.display-block {
-  display: block;
-}
-
+/* Estilo para garantir que o gráfico desenhado pelo JS ocupe o espaço todo */
 canvas {
-  width: 100% !important;
-  height: 100% !important;
+    width: 100% !important; /* Força o gráfico a ter a largura total do card */
+    height: 100% !important; /* Força o gráfico a ter a altura total do card */
 }
 
-/* PAGINA DOS GRÁFICOS 2023 */
-
-.janela {
-  display: flex;
-  /* width: 100vw; */
-}
-
-.header-left a {
-  text-decoration: none;
-  color: white;
-}
-
-.header-left {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  height: 100vh;
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  border-right: 3px solid #32b9cd;
-  background-color: #212124;
-}
-
-.dash-right {
-  display: flex;
-  width: 70%;
-  height: fit-content;
-  background-color: #161618;
-  position: relative;
-  top: 0;
-  left: 25%;
-  height: 100vh;
-  overflow: auto;
-}
-
-.header-left h1 {
-  color: #32b9cd;
-}
-
-.hello {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.hello h3 {
-  color: #e3b062;
-  font-weight: 300;
-  font-size: 1.2rem;
-}
-
-.hello h3 span {
-  font-weight: 800;
-}
-
-.btn-nav {
-  width: 40%;
-  color: white;
-  background-color: #e6005a;
-  border-radius: 5px;
-  text-align: center;
-  padding: 2% 5%;
-}
-
-.btn-nav-white {
-  width: 40%;
-  background-color: white;
-  border: 3px solid #e6005a;
-  border-radius: 5px;
-  text-align: center;
-  padding: 2% 5%;
-}
-
-.btn-nav-white h3 {
-  color: #e6005a;
-  padding: 0;
-  margin: 0;
-}
-
-.btn-nav h3,
-.btn-logout h3 {
-  margin: 0;
-  padding: 0;
-}
-
-.btn-logout {
-  margin: 0;
-  padding: 0;
-  width: 20%;
-  background-color: #32b9cd;
-  color: white;
-  border-radius: 10px;
-  text-align: center;
-  padding: 10px 15px;
-  margin-bottom: 100px;
-  cursor: pointer;
+.logo-titulo {
+    font-family: 'Great Vibes', cursive;
 }
