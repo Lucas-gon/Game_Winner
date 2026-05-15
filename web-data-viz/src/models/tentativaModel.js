@@ -1,5 +1,4 @@
 var database = require("../database/config");
-const { cadastrar } = require("./usuarioModel");
 
 function cadastrar_tentativa(descricao, resultado, fk_usuario) {
     var instrucaoSql = `
