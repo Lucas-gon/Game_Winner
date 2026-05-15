@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar | Game Winner</title>
+</head>
+<body>
+    <div class="card-questionario">
+    <h2>Registrar Momento Clutch</h2>
+    
+    <div class="campo">
+        <span>O que aconteceu na jogada?</span>
+        <input id="ipt_descricao" placeholder="Ex: Final da Interclasse, 2 segundos no relógio...">
+    </div>
+
+    <div class="campo">
+        <span>Qual foi o desfecho?</span>
+        <div class="botoes-resultado">
+            <button class="btn-acerto" onclick="selecionar('Acertou')">ACERTEI</button>
+            <button class="btn-erro" onclick="selecionar('Errou')">ERREI</button>
+        </div>
+    </div>
+
+    <button onclick="registrarTentativa()" class="btn-enviar">Gravar no Histórico</button>
+</div>
+</body>
+</html>
+<script>
+    var resultadoEscolhido = "";
+
+function selecionar(valor) {
+    resultado_escolhido = valor;
+    // Aqui você pode adicionar um efeito visual de "botão apertado"
+}
+
+function registrarTentativa() {
+    var corpo = {
+        descricao: ipt_descricao.value,
+        resultado: resultado_escolhido,
+        id_usuario: sessionStorage.ID_USUARIO // Pegando o ID da sessão
+    }
+
+    fetch("/tentativas/cadastrar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(corpo)
+    }).then(resposta => {
+        if (resposta.ok) {
+            alert("Tentativa registrada com sucesso!");
+            window.location = "dashboard.html"; // Volta para ver o gráfico atualizado
+        }
+    });
+}
+</script>
