@@ -15,9 +15,9 @@
  function entrar() {
 
         let email = ipt_email.value;
-        let senhaVar = ipt_senha.value;
+        let senha = ipt_senha.value;
 
-        if (email == "" || senha == "") {
+        if (email.trim() == "" || senha.trim() == "") {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
             return false;
@@ -52,7 +52,7 @@
                     sessionStorage.ID_USUARIO = json.id;
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "dashboard/dashboard.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
