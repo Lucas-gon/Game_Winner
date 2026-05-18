@@ -1,4 +1,4 @@
-var tentativaModel = require("../model/tentativaModel"); 
+var tentativaModel = require("../models/tentativaModel"); 
     
 function cadastrar(req, res) {
     var descricao = req.body.descricao;

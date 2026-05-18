@@ -23,7 +23,7 @@ body {
 
 /* Estiliza a barra de navegação superior */
 .header {
-    background-color: #1a1a1a; /* Cinza bem escuro para diferenciar do fundo */
+    background-color: #383737; /* Cinza bem escuro para diferenciar do fundo */
     border-bottom: 2px solid var(--cor-principal); /* Linha laranja fina na parte de baixo */
     padding: 10px 0; /* Espaço interno em cima e embaixo */
 }
