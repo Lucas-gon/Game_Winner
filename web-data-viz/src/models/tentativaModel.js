@@ -9,6 +9,17 @@ function cadastrar(descricao, resultado, fk_usuario) {
     return database.executar(instrucaoSql);
 }
 
+function buscarDadosDashboard(idUsuario) {
+    var instrucaoSql = `
+        SELECT fg_porcentagem, total_arremessos, total_acertos, total_erros 
+        FROM vw_dashboard_usuario 
+        WHERE fk_usuario = ${idUsuario};
+    `;
+    console.log("Executando no Model: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
-    cadastrar
+    cadastrar,
+    buscarDadosDashboard
 };
