@@ -10,6 +10,7 @@
     <input type="text" placeholder="senha" id="ipt_senha">
     <input type="text" placeholder="email" id="ipt_email">
     <button onclick="cadastrar()">cadastrar</button>
+    <div id="mensagem_erro"></div>
 </body>
 </html>
 <script>
@@ -40,14 +41,14 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
+          // cardErro.style.display = "block";
 
           mensagem_erro.innerHTML =
             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
           setTimeout(() => {
-            window.location = "login.html";
-          }, "2000");
+    window.location = "./login.html";
+}, 2000);
 
           limparFormulario();
         } else {
