@@ -28,13 +28,13 @@
 </html>
 <script>
     var resultadoEscolhido = "";
+    
+    function selecionar(valor) {
+        resultado_escolhido = valor;
+    }
+    
+    function registrarTentativa() {
     let descricao_tentativa = ipt_descricao.value;
-
-function selecionar(valor) {
-    resultado_escolhido = valor;
-}
-
-function registrarTentativa() {
 
     fetch("/tentativas/cadastrar", {
         method: "POST",
