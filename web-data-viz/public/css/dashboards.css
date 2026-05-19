@@ -3,7 +3,7 @@
        
 /* Seleciona as variáveis globais que podem ser usadas em todo o código */
 :root {
-    --cor-principal: #FF8C00; /* Define o Laranja Basquete como cor de destaque */
+    --cor-principal: #FF8C00; /* Define a cor de destaque */
     --fundo-escuro: #121212;  /* Define o tom de preto para o fundo da página */
     --fundo-card: #1e1e1e;    /* Define um cinza escuro para os blocos de informação */
     --sucesso: #2ecc71;       /* Define a cor verde para resultados positivos (acertos) */

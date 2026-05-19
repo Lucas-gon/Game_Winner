@@ -1,14 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Game Winner - Login</title>
 </head>
-<body>
-    <input type="text" placeholder="email" id="ipt_email">
-    <input type="text" placeholder="senha" id="ipt_senha">
-    <button onclick="entrar()">Entrar</button>
+<body class="body-autenticacao">
+    <link rel="stylesheet" href="css/style.css">
+
+    <div class="card-auth">
+        <h2>Game Winner</h2>
+        <div class="form-group">
+            <label>E-mail</label>
+            <input type="email" id="ipt_email" placeholder="seu@email.com">
+        </div>
+        <div class="form-group">
+            <label>Senha</label>
+            <input type="password" id="ipt_senha" placeholder="******">
+        </div>
+        <button class="btn-submit" onclick="entrar()">Entrar</button>
+        <div class="link-alt">
+            Não tem conta? <a href="cadastro.html">Cadastre-se aqui</a>
+        </div>
+    </div>
 </body>
 </html>
 <script>
@@ -22,9 +35,9 @@
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
             return false;
         }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+        // else {
+        //     setInterval(sumirMensagem, 5000)
+        // }
 
         console.log("FORM LOGIN: ", email);
         console.log("FORM SENHA: ", senha);
@@ -72,10 +85,6 @@
         })
 
         return false;
-    }
-
-    function sumirMensagem() {
-        cardErro.style.display = "none"
     }
 </script>
 
