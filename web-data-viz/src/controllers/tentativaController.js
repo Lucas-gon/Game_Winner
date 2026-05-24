@@ -28,9 +28,10 @@ function cadastrar(req, res) {
 }
 
 function buscarDadosDashboard(req, res) {
-    var idUsuario = req.params.idUsuario; // Pega o ID do usuário vindo da URL
+    console.log("Entrei no DashBoard")
+    let id_usuario = req.params.id_usuario; // Pega o ID do usuário vindo da URL
 
-    tentativaModel.buscarDadosDashboard(idUsuario)
+    tentativaModel.buscarDadosDashboard(id_usuario)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado); // Devolve os dados para o Front-end
@@ -42,8 +43,32 @@ function buscarDadosDashboard(req, res) {
             res.status(500).json(erro.sqlMessage);
         });
 }
+function buscarEvolucao(req, res) {
+    console.log("Entrei na evolução")
+    var idUsuario = req.params.idUsuario;
+
+    console.log(`Recuperando o histórico de evolução para o usuário: ${idUsuario}`);
+
+    tentativaModel.buscarEvolucao(idUsuario)
+        .then(function (resultado) {
+
+            console.log("Resultado do Banco");
+            console.log(resultado);
+
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!");
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao buscar a evolução.", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
 
 module.exports = {
     cadastrar,
-    buscarDadosDashboard
+    buscarDadosDashboard,
+    buscarEvolucao
 }

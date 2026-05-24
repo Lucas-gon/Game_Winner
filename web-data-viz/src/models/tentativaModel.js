@@ -19,7 +19,21 @@ function buscarDadosDashboard(idUsuario) {
     return database.executar(instrucaoSql);
 }
 
+
+function buscarEvolucao(idUsuario) {
+    var instrucaoSql = `
+    SELECT resultado, DATE_FORMAT(data_registro, '%H:%i') as hora 
+    FROM tentativas 
+    WHERE fk_usuario = ${idUsuario} 
+    ORDER BY id_tentativa DESC LIMIT 7;`;
+    
+    console.log("Executando a query de evolução: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
 module.exports = {
     cadastrar,
-    buscarDadosDashboard
+    buscarDadosDashboard, 
+    buscarEvolucao       
 };
