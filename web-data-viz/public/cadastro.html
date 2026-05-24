@@ -31,15 +31,64 @@
 </html>
 <script>
     function cadastrar() {
-        let nome = ipt_nome.value;
-        let email = ipt_email.value;
-        let senha = ipt_senha.value;
+    let nome = ipt_nome.value;
+    let email = ipt_email.value;
+    let senha = ipt_senha.value;
 
-        if (nome == '' || senha == '' || email == '') {
-            console.log('Deu red')
-        }
+    if (nome.trim() == "" || email.trim() == "" || senha.trim() == "") {
+        mensagem_erro.innerHTML = "⚠️ Por favor, preencha todos os campos!";
+        return false;
+    }
 
-        // Enviando o valor da nova input
+    let arroba = email.indexOf('@'); 
+    let ponto_com = email.lastIndexOf('.com');
+
+    if (arroba == -1 || ponto_com == -1 || ponto_com < arroba) {
+        mensagem_erro.innerHTML = "⚠️ E-mail inválido! Certifique-se de usar '@' e '.com' na ordem correta.";
+        return false;
+    }
+
+    if (senha.length < 8) {
+    mensagem_erro.innerHTML = "⚠️ A senha deve ter no mínimo 8 caracteres!";
+    return false;
+}
+
+let tem_maiuscula = false;
+let tem_numero = false;
+let tem_especial = false;
+
+let caracteresEspeciais = "!@#$%^&*()_+-=[]{}|;':\",./<>?";
+
+for (let i = 0; i < senha.length; i++) {
+    let letra_atual = senha[i];
+
+    if (letra_atual >= '0' && letra_atual <= '9') {
+        tem_numero = true;
+    } 
+    else if (letra_atual >= 'A' && letra_atual <= 'Z') {
+        tem_maiuscula = true;
+    } 
+    else if (caracteresEspeciais.indexOf(letra_atual) != -1) {
+        tem_especial = true;
+    }
+}
+
+if (tem_maiuscula == false) {
+    mensagem_erro.innerHTML = "⚠️ A senha deve conter pelo menos uma letra maiúscula!";
+    return false;
+}
+
+if (tem_numero == false) {
+    mensagem_erro.innerHTML = "⚠️ A senha deve conter pelo menos um número!";
+    return false;
+}
+
+if (tem_especial == false) {
+    mensagem_erro.innerHTML = "⚠️ A senha deve conter pelo menos um caractere especial! (Ex: @, #, $)";
+    return false;
+
+  } else {
+          // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
       method: "POST",
       headers: {
@@ -57,9 +106,8 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          // cardErro.style.display = "block";
           mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+            "✅Cadastro realizado com sucesso!<br>Redirecionando para tela de Login...";
 
           setTimeout(() => {
           window.location = "./login.html";
@@ -74,6 +122,8 @@
       });
 
     return false;
+    }
+    
   
     }
 

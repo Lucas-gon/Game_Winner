@@ -18,6 +18,7 @@
             <input type="password" id="ipt_senha" placeholder="******">
         </div>
         <button class="btn-submit" onclick="entrar()">Entrar</button>
+        <div id="mensagem_erro"></div>
         <div class="link-alt">
             Não tem conta? <a href="cadastro.html">Cadastre-se aqui</a>
         </div>
@@ -30,15 +31,21 @@
         let email = ipt_email.value;
         let senha = ipt_senha.value;
 
-        if (email.trim() == "" || senha.trim() == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            return false;
-        }
-        // else {
-        //     setInterval(sumirMensagem, 5000)
-        // }
+    if (email.trim() == "" || senha.trim() == "") {
+        mensagem_erro.innerHTML = "⚠️ Por favor, preencha e-mail e senha!";
+        return false;
+    }
+    let arroba = email.indexOf('@');
+    let ponto_com = email.lastIndexOf('.com');
 
+    if (arroba == -1 || ponto_com == -1 || ponto_com < arroba) {
+        mensagem_erro.innerHTML = "⚠️ O formato do e-mail inserido é inválido.";
+        return false;
+    }
+      
+    else{
+        mensagem_erro.innerHTML = '';
+        
         console.log("FORM LOGIN: ", email);
         console.log("FORM SENHA: ", senha);
 
@@ -85,6 +92,7 @@
         })
 
         return false;
+    }
     }
 </script>
 
