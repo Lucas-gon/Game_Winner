@@ -9,100 +9,202 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/dashboards.css">
     
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    
 </head>
 
 <body>
 
     <div class="header">
-    <div class="container">
-        <h1 class="logo-titulo">Game Winner</h1>
-        <ul class="navbar">
-            <a href="tentativas.html" class="nav-item">Registrar Tentativa</a>
-            <a href="../index.html" class="nav-item sair">Sair</a>
-        </ul>
+        <div class="container">
+            <h1 class="logo-titulo">Game Winner</h1>
+            <ul class="navbar">
+                <a href="tentativas.html" class="nav-item">Registrar Tentativa</a>
+                <a href="../index.html" class="nav-item sair">Sair</a>
+            </ul>
     </div>
 </div>
 
-    <div class="dash-container">
-        <div class="dash-header">
-            <h1>Seu Desempenho Clutch</h1>
-            <p style="color: #bbb;">Análise de aproveitamento nos últimos 7 dias</p>
+<div class="dash-container">
+    <div class="dash-header">
+        <h1>Seu Desempenho Clutch</h1>
+        <p style="color: #bbb;">Análise de aproveitamento nos últimos 7 dias</p>
+    </div>
+    
+    <div class="kpi-wrapper">
+        <div class="kpi-card">
+            <h4>Field Goal Percentage</h4>  <!-- // Taxa de Aproveitamento de Arremessos de Quadra -->
+            <span id="kpi_porcentagem" class="valor" style="color: var(--cor-principal);">0%</span>
         </div>
-
-        <div class="kpi-wrapper">
-            <div class="kpi-card">
-                <h4>Field Goal Percentage</h4>  <!-- // Taxa de Aproveitamento de Arremessos de Quadra -->
-                <span class="valor" style="color: var(--cor-principal);">0%</span>
-            </div>
-            <div class="kpi-card">
-                <h4>Arremessos Totais</h4>
-                <span class="valor">0</span>
+        <div class="kpi-card">
+            <h4>Arremessos Totais</h4>
+            <span id="kpi_totais" class="valor">0</span>
             </div>
             <div class="kpi-card">
                 <h4>Total de Acertos</h4>
-                <span class="valor" style="color: var(--sucesso);">0🔥</span>
+                <span id="kpi_total_acertos" class="valor" style="color: var(--sucesso);">0🔥</span>
             </div>
         </div>
-
+        
         <div class="graph-wrapper">
             <div class="graph-card">
                 <h4 style="margin-top: 0;">Evolução de Aproveitamento (%)</h4>
-                <canvas id="chartLinha"></canvas>
+                <canvas id="grafico_linha"></canvas>
             </div>
-
+            
             <div class="graph-card side">
                 <h4 style="margin-top: 0;">Acertos vs Erros</h4>
-                <canvas id="chartDonut"></canvas>
+                <canvas id="grafico_donut"></canvas>
             </div>
         </div>
     </div>
-
-    <script>
-        // Configuração do Gráfico de Linha (Evolução Semanal)
-        const ctxLinha = document.getElementById('chartLinha').getContext('2d');
-        new Chart(ctxLinha, {
-            type: 'line', // Define que o gráfico é de linha
-            data: {
-                labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'], // Eixo X
-                datasets: [{
-                    label: 'Aproveitamento %',
-                    data: 0, // Dados fictícios da Beta
-                    borderColor: '#FF8C00', // Cor da linha 
-                    backgroundColor: 'rgba(255, 140, 0, 0.2)', // Cor de fundo sob a linha
-                    fill: true, // Preenche a área abaixo da linha
-                    tension: 0.4 // Deixa a linha mais curva/suave
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: { beginAtZero: true, max: 100 } // Escala de 0 a 100%
-                }
-            }
-        });
-
-        // Configuração do Gráfico de Donut (Acertos vs Erros)
-        const ctxDonut = document.getElementById('chartDonut').getContext('2d');
-        new Chart(ctxDonut, {
-            type: 'doughnut', // Define que o gráfico é de rosca
-            data: {
-                labels: ['Acertos', 'Erros'],
-                datasets: [{
-                    data: 0, // Exemplo: 55 acertos e 30 erros
-                    backgroundColor: ['#2ecc71', '#e74c3c'], // Verde e Vermelho
-                    borderWidth: 0 // Remove as bordas entre as fatias
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: { position: 'bottom' } // Legenda na parte de baixo
-                }
-            }
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
-
 </html>
+
+<script>
+    // -- Váriaveis dos gráficos
+    let grafico_Linha;
+    let grafico_Donut;
+
+    // --- GRÁFICO 1: EVOLUÇÃO (LINHA) ---
+    const ctx_linha = document.getElementById('grafico_linha');
+    grafico_Linha = new Chart(ctx_linha, {
+        type: 'line',
+        data: {
+            labels: ['1º', '2º', '3º', '4º', '5º', '6º', '7º'], // Simula os últimos 7 registros
+            datasets: [{
+                label: 'Aproveitamento %',
+                data: [0], // Dados fictícios para teste
+                borderColor: '#ff6600', // 
+                backgroundColor: '#ff660033', // Laranja com transparência
+                tension: 0.4, // Curva suave na linha
+                fill: true
+            }]
+        },
+        options: {
+            scales: {
+                y: { beginAtZero: true, grid: { color: '#333' }, ticks: { color: '#fff' } },
+                x: { grid: { display: false }, ticks: { color: '#fff' } }
+            },
+            plugins: { legend: { display: false } } // Esconde legenda para ficar mais limpo
+        }
+    });
+
+    // --- GRÁFICO 2: ACERTOS VS ERROS (DONUT) ---
+    const ctx_donut = document.getElementById('grafico_donut');
+    grafico_Donut =  new Chart(ctx_donut, {
+        type: 'doughnut',
+        data: {
+            labels: ['Acertos', 'Erros'],
+            datasets: [{
+                data: [0, 0], 
+                backgroundColor: ['#22c55e', '#ef4444'], // Cores pedaços
+                borderColor: '#161616',
+                borderWidth: 3
+            }]
+        },
+        options: {
+            cutout: '70%', // Muda o raio do Donut
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { color: '#fff', padding: 20 }
+                }
+            }
+        }
+    });
+
+    function buscarDadosDashboard() {
+        // Pegando o ID do usuário logado no Game Winner
+
+        let id_usuario = sessionStorage.ID_USUARIO;
+
+        fetch(`/tentativas/dashboard/${id_usuario}`, {
+            method: "GET",
+            headers: {"Content-Type": "application/json"}
+        })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (dados) {
+                    console.log("Dados recebidos da View: ", JSON.stringify(dados));
+                     
+                    // KPIS
+                    document.getElementById("kpi_porcentagem").innerHTML = `${dados[0].fg_porcentagem}%`
+                    document.getElementById("kpi_totais").innerHTML = `${dados[0].total_arremessos}`;
+                    document.getElementById("kpi_total_acertos").innerHTML = `${dados[0].total_acertos} 🔥`;
+
+                    // Gráfico Donut
+                    grafico_Donut.data.datasets[0].data = [
+                        dados[0].total_acertos,
+                        dados[0].total_erros
+                    ];
+                    grafico_Donut.update();
+                });
+            } else {
+                console.error("Nenhum dado encontrado ou erro na API");
+            }
+        })
+        .catch(function (erro) {
+            console.error("Erro na requisição dos dados da Dash: ", erro);
+        });
+    }
+    function buscarEvolucao() {
+        console.log("Entrei na função");
+
+    let id_usuario = sessionStorage.ID_USUARIO;
+    
+    console.log("ID:", id_usuario);
+
+    if (!id_usuario || id_usuario == "undefined") {
+        console.error("ID do usuário não foi encontrado no sessionStorage! Verifique se realizou o login.");
+        return; 
+    }
+    fetch(`/tentativas/evolucao/${id_usuario}`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" }
+    })
+    .then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (dados) {
+                console.log("Dados da evolução recebidos: ", JSON.stringify(dados));
+
+                if (dados && dados.length > 0) {
+                    let labelsLinha = [];
+                    let dadosLinha = [];
+                    let acertosAcumulados = 0;
+
+                    let dadosInvertidos = dados.reverse();
+
+                    for (let i = 0; i < dadosInvertidos.length; i++) {
+                        labelsLinha.push(dadosInvertidos[i].hora); 
+
+                        if (dadosInvertidos[i].resultado === "Acertou") {
+                            acertosAcumulados++;
+                        }
+                        let totalAteAgora = i + 1;
+                        let aproveitamentoMomento = Math.round((acertosAcumulados / totalAteAgora) * 100);
+                        
+                        dadosLinha.push(aproveitamentoMomento);
+                    }
+                    if (typeof grafico_Linha !== 'undefined') {
+
+                        grafico_Linha.data.labels = labelsLinha;
+                        grafico_Linha.data.datasets[0].data = dadosLinha;
+                        grafico_Linha.update(); 
+                    }
+                }
+            });
+        } else {
+            console.error("Erro ao obter dados da evolução.");
+        }
+    })
+    .catch(function (erro) {
+        console.error("Erro no fetch da evolução: ", erro);
+    });
+}
+window.onload = function() {
+    buscarDadosDashboard(); 
+    buscarEvolucao();
+};
+
+</script>
