@@ -29,12 +29,12 @@ function cadastrar(req, res) {
 
 function buscarDadosDashboard(req, res) {
     console.log("Entrei no DashBoard")
-    let id_usuario = req.params.id_usuario; // Pega o ID do usuário vindo da URL
+    let id_usuario = req.params.id_usuario; 
 
     tentativaModel.buscarDadosDashboard(id_usuario)
         .then(function (resultado) {
             if (resultado.length > 0) {
-                res.status(200).json(resultado); // Devolve os dados para o Front-end
+                res.status(200).json(resultado); 
             } else {
                 res.status(204).send("Nenhum resultado encontrado!");
             }
