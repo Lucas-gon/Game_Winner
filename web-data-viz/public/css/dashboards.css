@@ -1,141 +1,124 @@
-/* pagina mural */
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
        
-/* Seleciona as variáveis globais que podem ser usadas em todo o código */
+
 :root {
-    --cor-principal: #FF8C00; /* Define a cor de destaque */
-    --fundo-escuro: #121212;  /* Define o tom de preto para o fundo da página */
-    --fundo-card: #1e1e1e;    /* Define um cinza escuro para os blocos de informação */
-    --sucesso: #2ecc71;       /* Define a cor verde para resultados positivos (acertos) */
-    --erro: #e74c3c;          /* Define a cor vermelha para resultados negativos (erros) */
+    --cor-principal: #FF8C00; 
+    --fundo-escuro: #121212;  
+    --fundo-card: #1e1e1e;    
+    --sucesso: #2ecc71;       
+    --erro: #e74c3c;          
 }
 
-/* Estilização geral do corpo da página */
+
 body {
-    background-color: var(--fundo-escuro); /* Aplica a cor preta de fundo */
-    color: white; /* Garante que todos os textos básicos sejam brancos */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Define a fonte padrão */
-    margin: 0; /* Remove as bordas brancas que o navegador coloca por padrão */
-    padding: 0; /* Remove preenchimentos internos padrão */
+    background-color: var(--fundo-escuro); 
+    color: white; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    margin: 0; 
+    padding: 0; 
 }
 
-/* --- ESTILO DA NAVBAR (Copiado da Home para manter o padrão) --- */
 
-/* Estiliza a barra de navegação superior */
+
 .header {
-    background-color: #383737; /* Cinza bem escuro para diferenciar do fundo */
-    border-bottom: 2px solid var(--cor-principal); /* Linha laranja fina na parte de baixo */
-    padding: 10px 0; /* Espaço interno em cima e embaixo */
+    background-color: #383737; 
+    border-bottom: 2px solid var(--cor-principal); 
+    padding: 10px 0; 
 }
 
-/* Container que centraliza os itens dentro da navbar */
+
 .header .container {
-    display: flex; /* Ativa o modo de alinhamento flexível */
-    justify-content: space-between; /* Empurra a logo para a esquerda e links para a direita */
-    align-items: center; /* Alinha os textos verticalmente no meio da barra */
-    width: 90%; /* Define que a barra ocupará 90% da largura da tela */
-    margin: 0 auto; /* Centraliza esse container de 90% no meio da tela */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 90%; 
+    margin: 0 auto; 
 }
 
-/* Estiliza o texto "Game Winner" com a fonte cursiva chique */
 .logo-titulo {
-    font-family: 'Great Vibes', cursive; /* Aplica a fonte que baixamos do Google */
-    font-size: 35px; /* Tamanho da fonte da logo */
-    color: white; /* Cor branca para a logo */
-    margin: 0; /* Remove margens automáticas que o H1 costuma ter */
+    font-family: 'Great Vibes', cursive; 
+    font-size: 35px; 
+    color: white; 
+    margin: 0; 
 }
 
-/* Estiliza a lista de links da navbar */
+
 .navbar {
-    display: flex; /* Deixa os itens da lista um ao lado do outro */
-    list-style: none; /* Remove as bolinhas da lista (dots) */
-    gap: 20px; /* Cria um espaço de 20px entre cada link */
+    display: flex; 
+    list-style: none;
+    gap: 20px; 
 }
 
-/* Estiliza os links individuais (a) */
+
 .navbar a {
-    text-decoration: none; /* Remove o sublinhado dos links */
-    color: #bbb; /* Define uma cor cinza clara para os links */
-    font-size: 14px; /* Tamanho da fonte dos links */
+    text-decoration: none; 
+    color: #bbb; 
+    font-size: 14px; 
 }
 
-/* --- ESTILO DA ÁREA DE CONTEÚDO DA DASH --- */
-
-/* Espaçamento principal em volta de toda a Dashboard */
 .dash-container {
-    padding: 30px; /* Espaço entre o conteúdo e as bordas da tela */
-    max-width: 1200px; /* Define um tamanho máximo para a Dash não esticar demais */
-    margin: 0 auto; /* Centraliza a Dashboard na tela */
+    padding: 30px; 
+    max-width: 1200px; 
+    margin: 0 auto; 
 }
 
-/* Título e descrição da Dashboard */
+
 .dash-header {
-    margin-bottom: 30px; /* Cria uma distância entre o título e os gráficos abaixo */
+    margin-bottom: 30px; 
 }
 
-/* --- ESTRUTURA DOS INDICADORES (KPIs) --- */
-
-/* Wrapper que segura os 3 cards de cima */
 .kpi-wrapper {
-    display: grid; /* Ativa o modo "Grid" (malha/tabela) */
-    grid-template-columns: repeat(3, 1fr); /* Cria 3 colunas de tamanhos iguais */
-    gap: 20px; /* Espaço entre cada card de indicador */
-    margin-bottom: 30px; /* Distância entre os indicadores e os gráficos */
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    margin-bottom: 30px; 
 }
 
-/* Estilo individual de cada card de indicador */
 .kpi-card {
-    background-color: var(--fundo-card); /* Fundo cinza escuro */
-    padding: 20px; /* Espaço interno para o texto não encostar nas bordas */
-    border-radius: 10px; /* Arredonda as pontas do card */
-    text-align: center; /* Centraliza o texto dentro do card */
-    border-bottom: 4px solid var(--cor-principal); /* Detalhe laranja grosso na base */
+    background-color: var(--fundo-card);
+    padding: 20px; 
+    border-radius: 10px;
+    text-align: center;
+    border-bottom: 4px solid var(--cor-principal); 
 }
 
-/* Estilo do título do indicador (ex: FG% ATUAL) */
 .kpi-card h4 {
-    margin: 0; /* Remove margens extras */
-    color: #bbb; /* Texto cinza para o rótulo */
-    font-size: 14px; /* Tamanho menor para o título */
-    text-transform: uppercase; /* Deixa o texto todo em MAIÚSCULO */
+    margin: 0;
+    color: #bbb; 
+    font-size: 14px; 
+    text-transform: uppercase;
 }
 
-/* Estilo do valor numérico principal dentro do card */
 .kpi-card .valor {
-    font-size: 32px; /* Valor grande para chamar atenção */
-    font-weight: bold; /* Deixa o número em negrito */
-    margin-top: 10px; /* Distância entre o título e o valor */
-    display: block; /* Garante que o valor ocupe uma linha própria */
+    font-size: 32px; 
+    font-weight: bold; 
+    margin-top: 10px; 
+    display: block; 
 }
 
-/* --- ESTRUTURA DOS GRÁFICOS --- */
-
-/* Wrapper que segura os dois gráficos principais */
 .graph-wrapper {
-    display: flex; /* Deixa os gráficos um ao lado do outro */
-    gap: 20px; /* Espaço entre o gráfico de linha e o de pizza */
-    height: 400px; /* Define uma altura fixa para a área dos gráficos */
+    display: flex; 
+    gap: 20px; 
+    height: 400px; 
 }
 
-/* Estilo da caixa que envolve cada gráfico */
+
 .graph-card {
-    background-color: var(--fundo-card); /* Fundo cinza escuro */
-    padding: 20px; /* Espaço interno */
-    border-radius: 10px; /* Pontas arredondadas */
-    flex: 2; /* Faz esse gráfico (o de linha) ocupar 2/3 do espaço disponível */
-    display: flex; /* Permite controlar o conteúdo interno */
-    flex-direction: column; /* Organiza título e gráfico de cima para baixo */
+    background-color: var(--fundo-card); 
+    padding: 20px; 
+    border-radius: 10px;
+    flex: 2; 
+    display: flex; 
+    flex-direction: column; 
 }
 
-/* Classe específica para o gráfico menor (lateral) */
 .graph-card.side {
-    flex: 1; /* Faz esse gráfico (o de pizza) ocupar apenas 1/3 do espaço */
+    flex: 1; 
 }
 
-/* Estilo para garantir que o gráfico desenhado pelo JS ocupe o espaço todo */
 canvas {
-    width: 100% !important; /* Força o gráfico a ter a largura total do card */
-    height: 100% !important; /* Força o gráfico a ter a altura total do card */
+    width: 100% !important; 
+    height: 100% !important;
 }
 
 .logo-titulo {

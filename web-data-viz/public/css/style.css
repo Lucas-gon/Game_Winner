@@ -1,296 +1,560 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 :root {
-            /* Define a cor principal do site */
-            --cor-principal: #FF8C00; 
-            /* Define a cor de fundo */
-            --fundo-escuro: #121212;
-            /* Define a cor dos cards */
-            --fundo-card: #1e1e1e;
-        }
+  --fundo: #0d0e12;
+  --fundo-card: #16171d;
+  --detalhe: #C85A17;
+  --texto-principal: #ffffff;
+  --texto-secundario: #8a8d98;
+  --fundo-cyber: #0d0e12;
+  --detalhe-cyber: #FF5500;
+}
 
-        /* Aplica estilos ao corpo inteiro da página */
-        body {
-            /* Define a cor de fundo */
-            background-color: var(--fundo-escuro);
-            /* Define a cor padrão de todos os textos */
-            color: white;
-            /* Remove margens padrão do navegador */
-            margin: 0;
-            /* Define uma fonte moderna e sem serifa para o corpo do texto */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+/* Aplica estilos ao corpo inteiro da página */
+body {
+  /* Define a cor de fundo */
+  background-color: var(--fundo);
+  /* Define a cor padrão de todos os textos */
+  color: white;
+  /* Remove margens padrão do navegador */
+  margin: 0;
+  /* Define uma fonte moderna e sem serifa para o corpo do texto */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
 
-        /* Configurações da barra de navegação (Header) */
-        .header {
-            /* Define a cor de fundo da navbar */
-            background-color: #383737;
-            /* Adiciona uma linha colorida na parte de baixo para dar destaque */
-            border-bottom: 2px solid var(--cor-principal);
-            /* Adiciona um preenchimento interno em cima e embaixo */
-            padding: 10px 0;
-            /* Garante que a barra ocupe toda a largura da tela */
-            width: 100%;
-        }
+/* Configurações da barra de navegação (Header) */
+.header {
+  /* Define a cor de fundo da navbar */
+  background-color: var(--fundo);
+  /* Adiciona uma linha colorida na parte de baixo para dar destaque */
+  border-bottom: 2px solid var(--detalhe);
+  /* Adiciona um preenchimento interno em cima e embaixo */
+  padding: 10px 0;
+  /* Garante que a barra ocupe toda a largura da tela */
+  width: 100%;
 
-        /* Container que centraliza o conteúdo da navbar */
-        .header .container {
-            /* Ativa o Flexbox para alinhar os elementos internamente */
-            display: flex;
-            /* Empurra a logo para a esquerda e o menu para a direita */
-            justify-content: space-between;
-            /* Alinha os itens verticalmente ao centro */
-            align-items: center;
-            /* Define a largura útil do conteúdo */
-            width: 80%;
-            /* Centraliza o container na tela horizontalmente */
-            margin: 0 auto;
-        }
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-        /* Estilização da logo (Texto Cursivo Chique) */
-        .logo-titulo {
-            /* Aplica a fonte elegante que importamos do Google */
-            font-family: 'Great Vibes', cursive;
-            /* Define um tamanho de destaque para o nome da marca */
-            font-size: 42px;
-            /* Define o peso da fonte (400 é o normal para cursivas) */
-            font-weight: 400;
-            /* Define a cor da logo (pode ser alterada via JS futuramente) */
-            color: white;
-            /* Remove margens automáticas da tag H1 */
-            margin: 0;
-        }
+/* Container que centraliza o conteúdo da navbar */
+.header .container {
+  /* Ativa o Flexbox para alinhar os elementos internamente */
+  display: flex;
+  /* Empurra a logo para a esquerda e o menu para a direita */
+  justify-content: space-between;
+  /* Alinha os itens verticalmente ao centro */
+  align-items: center;
+  /* Define a largura útil do conteúdo */
+  width: 80%;
+  /* Centraliza o container na tela horizontalmente */
+  margin: 0 auto;
+}
 
-        /* Estilização da lista de links da Navbar */
-        .navbar {
-            /* Ativa o Flexbox para deixar os links um ao lado do outro */
-            display: flex;
-            /* Remove as bolinhas (marcadores) da lista */
-            list-style: none;
-            /* Adiciona um espaço de 30px entre cada item do menu */
-            gap: 30px;
-            /* Remove margens padrão da lista */
-            margin: 0;
-        }
+/* Estilização da logo (Texto Cursivo Chique) */
+.logo-titulo {
+  /* Aplica a fonte elegante que importamos do Google */
+  font-family: "Great Vibes", cursive;
+  /* Define um tamanho de destaque para o nome da marca */
+  font-size: 42px;
+  /* Define o peso da fonte (400 é o normal para cursivas) */
+  font-weight: 400;
+  /* Define a cor da logo (pode ser alterada via JS futuramente) */
+  color: #C85A17;
+  /* Remove margens automáticas da tag H1 */
+  margin: 0;
+}
 
-        /* Estilo para os links (tags 'a') dentro da Navbar */
-        .navbar a {
-            /* Remove o sublinhado padrão dos links */
-            text-decoration: none;
-            /* Define a cor do texto para branco */
-            color: white;
-            /* Define o peso da fonte para ser levemente negrito */
-            font-weight: 500;
-            /* Adiciona uma transição suave de 0.3 segundos para efeitos */
-            transition: 0.3s;
-        }
+/* Estilização da lista de links da Navbar */
+.navbar {
+  /* Ativa o Flexbox para deixar os links um ao lado do outro */
+  display: flex;
+  /* Remove as bolinhas (marcadores) da lista */
+  list-style: none;
+  /* Adiciona um espaço de 30px entre cada item do menu */
+  gap: 30px;
+  /* Remove margens padrão da lista */
+  margin: 0;
+}
 
-        /* Efeito quando o usuário passa o mouse sobre o link */
-        .navbar a:hover {
-            /* Muda a cor do link para a cor principal (laranja) */
-            color: var(--cor-principal);
-        }
+/* Estilo para os links (tags 'a') dentro da Navbar */
+.navbar a {
+  /* Remove o sublinhado padrão dos links */
+  text-decoration: none;
+  /* Define a cor do texto para branco */
+  color: white;
+  /* Define o peso da fonte para ser levemente negrito */
+  font-weight: 500;
+  /* Adiciona uma transição suave de 0.3 segundos para efeitos */
+  transition: 0.3s;
+}
 
-        /* Configuração do Banner (Seção de Destaque) */
-        .banner {
-            /* Define uma altura mínima para o banner principal */
-            min-height: 400px;
-            /* Ativa o Flexbox para centralizar o texto internamente */
-            display: flex;
-            /* Alinha o conteúdo verticalmente */
-            align-items: center;
-            /* Adiciona um gradiente que vai do laranja para o preto */
-            background: linear-gradient(to right, #FF8C00, #121212);
-            /* Garante que o texto tenha um espaço da borda esquerda */
-            padding-left: 10%;
-        }
+/* Efeito quando o usuário passa o mouse sobre o link */
+.navbar a:hover {
+  /* Muda a cor do link para a cor principal (laranja) */
+  color: var(--detalhe);
+}
 
-        /* Estilo do título principal dentro do Banner */
-        .banner h1 {
-            /* Define um tamanho de fonte grande e impactante */
-            font-size: 50px;
-            /* Remove margens extras */
-            margin-bottom: 10px;
-        }
+/* Configuração do Banner (Seção de Destaque) */
+.banner {
+  /* Define uma altura mínima para o banner principal */
+  min-height: 400px;
+  /* Ativa o Flexbox para centralizar o texto internamente */
+  display: flex;
+  /* Alinha o conteúdo verticalmente */
+  align-items: center;
+  /* Adiciona um gradiente que vai do laranja para o preto */
+  background: linear-gradient(to right, #ff8c00, #121212);
+  /* Garante que o texto tenha um espaço da borda esquerda */
+  padding-left: 10%;
+}
 
-        /* Estilo do subtexto explicativo do Banner */
-        .banner p {
-            /* Define um tamanho de fonte legível para descrições */
-            font-size: 18px;
-            /* Adiciona um limite de largura para o texto não ficar muito longo */
-            max-width: 500px;
-            /* Deixa a cor levemente acinzentada para não cansar a vista */
-            color: #dddddd;
-        }
+/* Estilo do título principal dentro do Banner */
+.banner h1 {
+  color: var(--texto-principal);
+  text-shadow: 0px 0px 15px rgba(255, 85, 0, 0.6);
+}
 
-        /* Estilização dos Cards de Funcionalidades */
-        .sessao-detalhes {
-            /* Adiciona um espaço interno grande entre o banner e os cards */
-            padding: 60px 0;
-            /* Centraliza o texto dentro da seção */
-            text-align: center;
-        }
+/* Estilo do subtexto explicativo do Banner */
+.banner p {
+  /* Define um tamanho de fonte legível para descrições */
+  font-size: 18px;
+  /* Adiciona um limite de largura para o texto não ficar muito longo */
+  max-width: 500px;
+  /* Deixa a cor levemente acinzentada para não cansar a vista */
+  color: #dddddd;
+}
 
-        /* Container que segura os cards lado a lado */
-        .cards-container {
-            /* Ativa o Flexbox para organizar os cards */
-            display: flex;
-            /* Centraliza os cards horizontalmente */
-            justify-content: center;
-            /* Adiciona espaço entre os cards */
-            gap: 20px;
-            /* Permite que os cards pulem de linha se a tela for pequena */
-            flex-wrap: wrap;
-        }
+/* Estilização dos Cards de Funcionalidades */
+.sessao-detalhes {
+  background-color: var(--fundo-card);
+  /* Adiciona um espaço interno grande entre o banner e os cards */
+  padding: 60px 0;
+  /* Centraliza o texto dentro da seção */
+  text-align: center;
+}
 
-        /* Estilo individual de cada Card */
-        .card {
-            /* Define a cor de fundo conforme o tema dark */
-            background-color: var(--fundo-card);
-            /* Adiciona uma borda colorida no topo para estilo */
-            border-top: 5px solid var(--cor-principal);
-            /* Adiciona um preenchimento interno nos cards */
-            padding: 30px;
-            /* Define uma largura fixa para os cards */
-            width: 250px;
-            /* Adiciona bordas levemente arredondadas */
-            border-radius: 8px;
-            /* Adiciona uma sombra sutil para dar profundidade no escuro */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
+/* Container que segura os cards lado a lado */
+.cards-container {
+  /* Ativa o Flexbox para organizar os cards */
+  display: flex;
+  /* Centraliza os cards horizontalmente */
+  justify-content: center;
+  /* Adiciona espaço entre os cards */
+  gap: 20px;
+  /* Permite que os cards pulem de linha se a tela for pequena */
+  flex-wrap: wrap;
+}
 
-        .card-auth {
-            background-color: #1E1E1E;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            width: 350px;
-            text-align: center;
-        }
-        .card-auth h2 {
-            color: #ff6600;
-            margin-bottom: 30px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #A0A0A0;
-            font-size: 14px;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            box-sizing: border-box;
-            background-color: #2A2A2A;
-            border: 1px solid #333;
-            border-radius: 5px;
-            color: white;
-            outline: none;
-            transition: 0.3s;
-        }
-        .form-group input:focus {
-            border-color: #ff6600;
-        }
-        .btn-submit {
-            width: 100%;
-            padding: 12px;
-            background-color: #ff6600;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            margin-top: 10px;
-        }
-        .btn-submit:hover {
-            background-color: #e55b00;
-        }
-        .link-alt {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #A0A0A0;
-        }
-        .link-alt a {
-            color: #ff6600;
-            text-decoration: none;
-        }
+/* Estilo individual de cada Card */
+.card {
+  background-color: var(--fundo-card);
+  border: 1px solid rgba(255, 85, 0, 0.15); /* Ajustado de var para rgba */
+  padding: 30px;
+  width: 250px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+}
 
-        .body-autenticacao {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #121212;
-            color: #FFFFFF;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            width: 100vw;
-        }
-        .card-auth {
-            background-color: #1E1E1E;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            width: 350px;
-            text-align: center;
-        }
-        .card-auth h2 {
-            color: #ff6600;
-            margin-bottom: 30px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #A0A0A0;
-            font-size: 14px;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            box-sizing: border-box;
-            background-color: #2A2A2A;
-            border: 1px solid #333;
-            border-radius: 5px;
-            color: white;
-            outline: none;
-            transition: 0.3s;
-        }
-        .form-group input:focus {
-            border-color: #ff6600;
-        }
-        .btn-submit {
-            width: 100%;
-            padding: 12px;
-            background-color: #ff6600;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            margin-top: 10px;
-        }
-        .btn-submit:hover {
-            background-color: #e55b00;
-        }
-        .link-alt {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #A0A0A0;
-        }
-        .link-alt a {
-            color: #ff6600;
-            text-decoration: none;
-        }
+.card-auth {
+  background-color: #1e1e1e;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  width: 350px;
+  text-align: center;
+}
+.card-auth h2 {
+  color: #ff6600;
+  margin-bottom: 30px;
+}
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #a0a0a0;
+  font-size: 14px;
+}
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  background-color: #2a2a2a;
+  border: 1px solid #333;
+  border-radius: 5px;
+  color: white;
+  outline: none;
+  transition: 0.3s;
+}
+.form-group input:focus {
+  border-color: #ff6600;
+}
+.btn-submit {
+  width: 100%;
+  padding: 12px;
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+.btn-submit:hover {
+  background-color: #e55b00;
+}
+.link-alt {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #a0a0a0;
+}
+.link-alt a {
+  color: #ff6600;
+  text-decoration: none;
+}
+
+.body-autenticacao {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--fundo);
+}
+
+.header .titulo {
+  color: var(--detalhe-cyber); 
+  font-family: "Barlow", sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.logo-autenticacao {
+  color: var(
+    --detalhe-cyber
+  ); 
+  font-family:
+    "Barlow", sans-serif; 
+  font-style: italic; 
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+}
+
+.area-formulario {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+.card-auth {
+  background-color: #1e1e1e;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  width: 350px;
+  text-align: center;
+}
+.card-auth h2 {
+  color: #ff6600;
+  margin-bottom: 30px;
+}
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #a0a0a0;
+  font-size: 14px;
+}
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  background-color: #2a2a2a;
+  border: 1px solid #333;
+  border-radius: 5px;
+  color: white;
+  outline: none;
+  transition: 0.3s;
+}
+.form-group input:focus {
+  border-color: #ff6600;
+}
+.btn-submit {
+  width: 100%;
+  padding: 12px;
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+.btn-submit:hover {
+  background-color: #e55b00;
+}
+.link-alt {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #a0a0a0;
+}
+.link-alt a {
+  color: #ff6600;
+  text-decoration: none;
+}
+
+.banner-principal {
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(13, 14, 18, 0.95) 35%,
+      rgba(13, 14, 18, 0.4) 70%,
+      rgba(13, 14, 18, 0) 100%
+    ),
+    url("../assets/imgs/imagem_arena.avif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.secao-sobre {
+  padding: 80px 0;
+  background-color: var(--fundo-cyber);
+}
+
+.sobre-conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 0 4%;
+}
+
+.sobre-texto {
+  color: var(--texto-secundario);
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+.sobre-texto h2 {
+  color: var(--texto-principal);
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.sobre-texto p {
+  color: var(--texto-secundario);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.placeholder-foto {
+  width: 320px;
+  height: 320px;
+  background-color: var(--fundo-card);
+  border: 2px solid var(--detalhe-cyber);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.foto-perfil {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.titulo-secao {
+  font-size: 28px;
+  color: var(--texto-principal);
+  margin-bottom: 40px; /* Cria um espaço perfeito até os cards */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.secao-recursos {
+  padding: 60px 0;
+  background-color: #0d0e12; /* Mantém o fundo integrado */
+  text-align: center;
+}
+
+/* Estilização dos Três Campos Vazios */
+.secao-registro {
+  padding: 60px 0;
+  background-color: var(--fundo-card);
+  text-align: center;
+}
+
+.secao-registro h2 {
+  margin-bottom: 30px;
+}
+
+.tres-campos {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.campo-vazio {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.campo-vazio label {
+  color: var(--texto-secundario);
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.campo-vazio input {
+  background-color: var(--fundo-cyber);
+  border: 1px solid rgba(255, 85, 0, 0.3);
+  border-radius: 6px;
+  padding: 12px;
+  color: var(--texto-secundario);
+  width: 240px;
+  cursor: not-allowed;
+}
+
+/* Estilização da Área do Gráfico */
+.secao-grafico {
+  padding: 80px 0;
+  background-color: var(--fundo-cyber);
+  text-align: center;
+}
+
+.secao-grafico h2 {
+  margin-bottom: 30px;
+}
+
+.box-grafico {
+  width: 100%;
+  max-width: 900px;
+  height: 350px;
+  background-color: var(--fundo-card);
+  border: 1px solid rgba(255, 85, 0, 0.2);
+  border-radius: 12px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--texto-secundario);
+}
+
+.botoes-jogadores {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 25px 0 40px 0;
+  padding: 0 10px;
+}
+
+.btn-jogador {
+  background-color: #1e1f29;
+  color: #a3a5b2;
+  border: 1px solid #2f3142;
+  padding: 10px 18px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn-jogador:hover {
+  background-color: #2a2c3d;
+  color: #ffffff;
+  border-color: #C85A17;
+  transform: translateY(-2px);
+}
+
+btn-jogador.ativo {
+  background: linear-gradient(135deg, #FF5500, #C85A17);
+  color: #ffffff;
+  border-color: #FF5500;
+  box-shadow: 0 0 15px rgba(255, 85, 0, 0.4);
+}
+
+.foto-jogador-container {
+  flex: 0.8;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgba(255, 85, 0, 0.1);
+}
+
+.dashboard-gigantes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #16171d;
+  border-radius: 16px;
+  padding: 30px;
+  gap: 30px;
+  margin-top: 20px;
+  border: 1px solid #FF5500;
+}
+
+.foto-jogador-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  max-width: 320px;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #303133;
+}
+
+.foto-atleta {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.perfil-jogador {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.grafico-container-donut {
+  flex: 1.2;
+  background-color: #303133;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #2f3142;
+  text-align: center;
+}
+
+.canvas-wrapper {
+  position: relative;
+  height: 240px; 
+  width: 100%;
+  margin-top: 15px;
+}
