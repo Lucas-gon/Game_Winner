@@ -16,39 +16,200 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 <body>
-
     <div class="header">
-        <div class="container">
-            <div class="header-logo">
-                <h1 class="logo-titulo">Game Winner</h1>
+    <div class="container">
+        <div class="header-logo">
+            <h1 class="logo-titulo">Game Winner</h1>
+        </div>
+        <ul class="navbar">
+            <li><a href="index.html" style="color: var(--detalhe);">Início</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="cadastro.html">Cadastro</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="banner banner-principal">
+    <div class="banner-conteudo">
+        <h1>Seus arremessos contam uma história.</h1>
+        <p>No basquete ou na vida, o resultado depende da sua coragem para arremessar. Registre sua jornada e melhore sua performance sob pressão.</p>
+    </div>
+</div>
+
+<div class="secao-sobre">
+    <div class="container">
+        <div class="sobre-conteudo">
+            <div class="sobre-texto">
+                <h2>🏀Por que Basquete?🏀</h2>
+                <p>O basquete me ensinou que o resultado final depende da nossa disposição para evoluir sob pressão. 
+                    Esse esporte moldou meu senso de competitividade e despertou em mim a vontade constante de arriscar. 
+                    Mais do que jogadas ensaiadas, a disciplina das quadras transbordou para a minha rotina: 
+                    foi por causa dela que comecei a fazer musculação, passei a estudar com mais estratégia e decidi que 
+                    nunca aceitaria ficar estagnado. Este projeto é a união dessa paixão com a tecnologia, 
+                    feito para quem também vive em constante evolução.</p>
             </div>
-            <ul class="navbar">
-                <li><a href="index.html" style="color: var(--cor-principal);">Início</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
-            </ul>
+            <div class="sobre-foto">
+                <div class="placeholder-foto">
+                    <img src="./assets/imgs/eu_baska.png" alt="Minha Foto" class="foto-perfil">
+                </div>
+            </div>
         </div>
     </div>
+</div>
 
-    <div class="banner">
-        <div class="banner-conteudo">
-            <h1>Domine o seu Clutch Time.</h1>
-            <p>No basquete ou na vida, o resultado depende da sua coragem para arremessar. 
-               Registre sua jornada e melhore sua performance sob pressão.</p>
-        </div>
-    </div>
-
-    <div class="sessao-detalhes">
+<div class="secao-recursos">
+    <div class="container">
+        <h2 class="titulo-secao">O que você vai encontrar no Game Winner</h2>
+        
         <div class="cards-container">
-            <div class="card">
-                <h3>Gráficos de Clutches</h3>
-                <p>Veja sua evolução entre arremessos convertidos e perdidos.</p>
             </div>
-            <div class="card">
-                <h3>Hall da Fama</h3>
-                <p>Conheça os mestres que dominaram os momentos decisivos.</p>
+    </div>
+</div>
+
+<div class="cards-container">
+    <div class="card">
+        <h2>Métricas de Chute</h2>
+        <p>No basquete, errar faz parte do jogo. Monitore seus erros e acertos sem julgamentos, 
+        transformando falhas em aprendizado e construindo a confiança necessária para nunca deixar de tentar.</p>
+    </div>
+
+    <div class="card">
+        <h2>Histórico de Partidas</h2>
+        <p>Grandes conquistas são frutos de pequenos hábitos diários. 
+        Registre sua rotina, celebre seus pequenos progressos e entenda que a evolução real acontece no silêncio dos treinos diários.</p>
+    </div>
+
+    <div class="card">
+        <h2>Mamba Mentality</h2>
+        <p>Ser decisivo é uma escolha que exige coragem. 
+        Monitore sua capacidade de tomar decisões sob estresse e desenvolva a mentalidade de quem não tem medo de falhar na busca pela vitória.</p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="secao-grafico">
+    <div class="container">
+        <h2 class="titulo-secao">Dados dos Gigantes</h2>
+        
+        <div id="lista-botoes" class="botoes-jogadores"></div>
+
+        <div class="dashboard-gigantes">
+            <div class="foto-jogador-container">
+                <img id="jogador-foto" src="" alt="Foto do Jogador" class="foto-atleta">
+            </div>
+
+            <div class="perfil-jogador">
+                <h3 id="jogador-nome">Carregando...</h3>
+                <div class="info-badges">
+                    <span class="badge">Posição: <strong id="jogador-posicao">-</strong></span>
+                    <span class="badge">Time Atual: <strong id="jogador-time">-</strong></span>
+                    <span class="badge">Altura: <strong id="jogador-altura">-</strong></span>
+                </div>
+                <div class="bloco-frase">
+                    <p id="jogador-frase_motivacional">-</p>
+                </div>
+            </div>
+
+            <div class="grafico-container-donut">
+                <h4>Game Winners</h4>
+                <div class="canvas-wrapper">
+                    <canvas id="grafico-donut"></canvas>
+                </div>
             </div>
         </div>
     </div>
-      </body>
+</div>
+
+</body>
 </html>
+
+<script>
+    let lista_jogadores = [];
+    let grafico_jogadores = null;
+
+    function buscar_jogadores() {
+        fetch("/jogadores/listar")
+        .then(function (resposta) {
+
+            return resposta.json();
+        })
+        .then(function (dados) {
+
+            lista_jogadores = dados;
+            
+            botao_jogador();
+            
+            mostrar_dados(0);
+        });
+    }
+
+    function botao_jogador() {
+        const div_botoes = document.getElementById('lista-botoes');
+        div_botoes.innerHTML = ""; 
+
+        for (let i = 0; i < lista_jogadores.length; i++) {
+            const jogador_atual = lista_jogadores[i];
+
+            const novo_botao = document.createElement('button');
+            novo_botao.innerText = jogador_atual.nome;
+            novo_botao.className = "btn-jogador";
+            
+            novo_botao.setAttribute('onclick', 'mostrar_dados(' + i + ')');
+            
+            div_botoes.appendChild(novo_botao);
+        }
+    }
+
+    function mostrar_dados(posicao_jogador) {
+        const jogador = lista_jogadores[posicao_jogador];
+
+        document.getElementById('jogador-nome').innerText = jogador.nome;
+        document.getElementById('jogador-posicao').innerText = jogador.posicao;
+        document.getElementById('jogador-time').innerText = jogador.time_atual;
+        document.getElementById('jogador-altura').innerText = jogador.altura + "m";
+        document.getElementById('jogador-frase_motivacional').innerText = '"' + jogador.frase_motivacional + '"';
+
+        document.getElementById('jogador-foto').src = "./assets/imgs/fotos_jogadores/" + jogador.id_jogador + ".png";
+        document.getElementById('jogador-foto').alt = "Foto de " + jogador.nome;
+
+        const botoes = document.querySelectorAll('.btn-jogador');
+        for (let i = 0; i < botoes.length; i++) {
+            if (i === posicao_jogador) {
+                botoes[i].classList.add('ativo');
+            } else {
+                botoes[i].classList.remove('ativo');
+            }
+        }
+
+        grafico_donut(Number(jogador.game_winners_convertidos), Number(jogador.game_winners_perdidos));
+    }
+
+    function grafico_donut(convertidos, perdidos) {
+        const contexto = document.getElementById('grafico-donut').getContext('2d');
+        
+        if (grafico_jogadores !== null) {
+            grafico_jogadores.destroy();
+        }
+
+        grafico_jogadores = new Chart(contexto, {
+            type: 'doughnut',
+            data: {
+                labels: ['Convertidos', 'Perdidos'],
+                datasets: [{
+                    data: [convertidos, perdidos],
+                    backgroundColor: ['#FF5500', '#25262f'],
+                    borderColor: '#16171d',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '0%'
+            }
+        });
+    }
+
+    window.onload = buscar_jogadores;
+</script>

@@ -1,98 +1,108 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Game Winner - Login</title>
-</head>
-<body class="body-autenticacao">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="./assets/icon/game_winner.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  </head>
+  <body class="body-autenticacao">
 
-    <div class="card-auth">
-        <h2>Game Winner</h2>
+    <div class="header">
+      <div class="container">
+        <h1 class="logo-titulo">Game Winner</h1>
+        <ul class="navbar">
+          <li><a href="index.html">Início</a></li>
+         <li><a href="login.html" style="color: var(--detalhe);">Login</a></li>
+          <li><a href="cadastro.html">Cadastro</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="area-formulario">
+      <div class="card-auth">
+        <h2>Fazer Login</h2>
         <div class="form-group">
-            <label>E-mail</label>
-            <input type="email" id="ipt_email" placeholder="seu@email.com">
+          <label>E-mail</label>
+          <input type="email" id="ipt_email" placeholder="seu@email.com" />
         </div>
         <div class="form-group">
-            <label>Senha</label>
-            <input type="password" id="ipt_senha" placeholder="******">
+          <label>Senha</label>
+          <input type="password" id="ipt_senha" placeholder="******" />
         </div>
         <button class="btn-submit" onclick="entrar()">Entrar</button>
         <div id="mensagem_erro"></div>
+        
         <div class="link-alt">
-            Não tem conta? <a href="cadastro.html">Cadastre-se aqui</a>
+          Não tem conta? <a href="cadastro.html">Cadastre-se</a>
         </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
 <script>
- function entrar() {
-
-        let email = ipt_email.value;
-        let senha = ipt_senha.value;
+  function entrar() {
+    let email = ipt_email.value;
+    let senha = ipt_senha.value;
 
     if (email.trim() == "" || senha.trim() == "") {
-        mensagem_erro.innerHTML = "⚠️ Por favor, preencha e-mail e senha!";
-        return false;
+      mensagem_erro.innerHTML = "⚠️ Por favor, preencha e-mail e senha!";
+      return false;
     }
-    let arroba = email.indexOf('@');
-    let ponto_com = email.lastIndexOf('.com');
+    let arroba = email.indexOf("@");
+    let ponto_com = email.lastIndexOf(".com");
 
     if (arroba == -1 || ponto_com == -1 || ponto_com < arroba) {
-        mensagem_erro.innerHTML = "⚠️ O formato do e-mail inserido é inválido.";
-        return false;
-    }
-      
-    else{
-        mensagem_erro.innerHTML = '';
-        
-        console.log("FORM LOGIN: ", email);
-        console.log("FORM SENHA: ", senha);
+      mensagem_erro.innerHTML = "⚠️ O formato do e-mail inserido é inválido.";
+      return false;
+    } else {
+      mensagem_erro.innerHTML = "";
 
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: email,
-                senhaServer: senha
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
+      console.log("FORM LOGIN: ", email);
+      console.log("FORM SENHA: ", senha);
 
-            if (resposta.ok) {
-                console.log(resposta);
+      fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          emailServer: email,
+          senhaServer: senha,
+        }),
+      })
+        .then(function (resposta) {
+          console.log("ESTOU NO THEN DO entrar()!");
 
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
+          if (resposta.ok) {
+            console.log(resposta);
 
-                    setTimeout(function () {
-                        window.location = "dashboard/dashboard.html";
-                    }, 1000); // apenas para exibir o loading
+            resposta.json().then((json) => {
+              console.log(json);
+              console.log(JSON.stringify(json));
+              sessionStorage.EMAIL_USUARIO = json.email;
+              sessionStorage.NOME_USUARIO = json.nome;
+              sessionStorage.ID_USUARIO = json.id;
 
-                });
+              setTimeout(function () {
+                window.location = "dashboard/dashboard.html";
+              }, 1000);
+            });
+          } else {
+            console.log("Houve um erro ao tentar realizar o login!");
 
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
+            resposta.text().then((texto) => {
+              console.error(texto);
+              finalizarAguardar(texto);
+            });
+          }
         })
+        .catch(function (erro) {
+          console.log(erro);
+        });
 
-        return false;
+      return false;
     }
-    }
+  }
 </script>
-
