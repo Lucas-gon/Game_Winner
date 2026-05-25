@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Tentativa | Game Winner</title>
     <link rel="stylesheet" href="../css/style_tentativas.css">
+    <link rel="icon" href="../assets/icon/game_winner.png">
+
 </head>
 <body>
     <div class="container">
@@ -47,30 +49,21 @@
     let resultado_escolhido = "";
     
     function selecionar(valor) {
+    resultado_escolhido = valor;
 
-        resultado_escolhido = valor;
-
-    // 1. Buscamos os dois botões logo no início da função
-    const btnAcerto = document.querySelector(".btn-acerto");
-    const btnErro = document.querySelector(".btn-erro");
+    const btn_acerto = document.querySelector(".btn-acerto");
+    const btn_erro = document.querySelector(".btn-erro");
 
     if (valor === "Acertou") {
-        // 2. Se clicou em Acertou: adiciona o active nele e remove do Errou
-        btnAcerto.classList.add("active");
-        btnErro.classList.remove("active");
+
+        btn_acerto.classList.add("active");
+        btn_erro.classList.remove("active");
+
     } else if (valor === "Errou") {
-        // 3. Se clicou em Errou: adiciona o active nele e remove do Acertou
-        btnErro.classList.add("active");
-        btnAcerto.classList.remove("active");
-    }
-        // resultado_escolhido = valor;
-        // if(valor === "Acertou") {
-        //     const btnAcerto = document.querySelector(".btn-acerto")
-        //     btnAcerto.classList.toggle("active");
-        // } else if(valor === "Errou") {
-        //     const btnErro = document.querySelector(".btn-erro")
-        //     btnErro.classList.toggle("active");
-        // }
+
+        btn_erro.classList.add("active");
+        btn_acerto.classList.remove("active");
+        }
     }
     
     function registrarTentativa() {
@@ -101,7 +94,7 @@
     }).then(resposta => {
         if (resposta.ok) {
             alert("Tentativa registrada com sucesso!");
-            window.location = "dashboard.html"; // Volta para ver o gráfico atualizado
+            window.location = "dashboard.html";
         }
     });
 }
