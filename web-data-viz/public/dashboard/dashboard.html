@@ -188,9 +188,10 @@
               let acertosAcumulados = 0;
 
               let dados_invertidos = dados.reverse();
+              console.log(dados_invertidos)
 
               for (let i = 0; i < dados_invertidos.length; i++) {
-                labelsLinha.push(`Tentativa ${i + 1}`);
+                labelsLinha.push(`Tentativa ${dados_invertidos[i].id_tentativa}`);
 
                 if (dados_invertidos[i].resultado === "Acertou") {
                   acertosAcumulados++;

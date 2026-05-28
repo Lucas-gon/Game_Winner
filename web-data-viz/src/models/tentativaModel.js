@@ -22,7 +22,7 @@ function buscarDadosDashboard(idUsuario) {
 
 function buscarEvolucao(idUsuario) {
     var instrucaoSql = `
-    SELECT resultado, DATE_FORMAT(data_registro, '%H:%i') as hora 
+    SELECT resultado, id_tentativa 
     FROM tentativas 
     WHERE fk_usuario = ${idUsuario} 
     ORDER BY id_tentativa DESC LIMIT 7;`;
