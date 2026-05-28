@@ -24,7 +24,6 @@
     <div class="dash-container">
       <div class="dash-header">
         <h1>Seu Desempenho Clutch</h1>
-        <p style="color: #bbb">Análise de aproveitamento nos últimos 7 dias</p>
       </div>
 
       <div class="kpi-wrapper">
@@ -191,7 +190,7 @@
               let dados_invertidos = dados.reverse();
 
               for (let i = 0; i < dados_invertidos.length; i++) {
-                labelsLinha.push(dados_invertidos[i].hora);
+                labelsLinha.push(`Tentativa ${i + 1}`);
 
                 if (dados_invertidos[i].resultado === "Acertou") {
                   acertosAcumulados++;
